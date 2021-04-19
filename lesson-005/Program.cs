@@ -7,88 +7,49 @@ autor: Mikhail625@protonmail.com
 */
 
 /*
+ * Great sorry ... пока ничего толкового не сделано : ((( 
+ * ноя я активно работаю над этим 
  * пок только шаблон\рыба 
  
  */
 
-namespace lesson_004
+namespace lesson_005
 {
-    enum BTet
-    { }
 
+    /*
+     * 1. Ввести с клавиатуры произвольный набор данных и сохранить его в текстовый файл.
 
-    enum Month
-    {
-        January = 1, February, March, April, May, June, July, August, September, October, November, December
-    }
+        2. Написать программу, которая при старте дописывает текущее время в файл «startup.txt».
+3. Ввести с клавиатуры произвольный набор чисел (0...255) и записать их в бинарный файл.
+4. Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст;
+
+Конструктор класса должен заполнять эти поля при создании объекта;
+Внутри класса «Сотрудник» написать метод, который выводит информацию об объекте в консоль;
+Создать массив из 5 сотрудников
+
+Пример:
+Person[] persArray = new Person[5]; // Вначале объявляем массив объектов
+persArray[0] = new Person("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30); // потом для каждой ячейки массива задаем объект
+persArray[1] = new Person(...);
+...
+persArray[4] = new Person(...);
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+
 
     class Program
     {
-        static string GetStrFromCons(string strByDef, string strQuestion)
-        {
-            string strResult = "";
-            if (TestForNullOrEmpty(strQuestion) == true)
-            { strQuestion = "Enter value:"; }
 
-            Console.Write(strQuestion);
-            strResult = Console.ReadLine();
-
-            // check/verife isNull Empty
-            if (TestForNullOrEmpty(strResult) == true)
-            {
-                strResult = strByDef;
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("       " + "Not value, set by default: ");
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write(strResult);
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("");
-
-            }
-            return strResult;
-        }
-
-        static string GetFullName(string firstName, string lastName, string patronymic)
-        {
-            return ("  " + firstName + " " + lastName + " " + patronymic);
-        }
-
-        static void ClearScr(int countDown, int warningTimer)
-        {
-            bool bWarning = false;
-
-            for (int i = (countDown + 1); i > 0; i--)
-            {
-                System.Threading.Thread.Sleep(1000);
-                if (i == warningTimer) { bWarning = true; }
-                if (bWarning == true)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                }
-                else Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("\r         ");
-                Console.Write("\r     [{0}]", i);
-            }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Clear();
-
-
-
-        }
-
-
-        static bool TestForNullOrEmpty(string s)
-        {
-            bool result;
-            result = s == null || s == string.Empty;
-            return result;
-        }
 
         static void Main(string[] args)
         {
             Task1();
-            Task2();
-            Task3();
+            //Task2();
+            //Task3();
 
             static void Task1()
             { // Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
@@ -100,53 +61,22 @@ namespace lesson_004
 
                 bool Finish = false;
 
-                string[] arrNegativeAnswear = { "0", "n", "N", "no", "NO", "н", "Н", "нет", "НЕТ", "", "", "", "", "", "", "" };
-                string[] arrPostiveAnswear = { "1", "y", "Y", "yes", "YES", "д", "Д", "да", "ДА", "", "", "", "", "", "", "", "" };
 
-
-                string nameDef1 = "Тарковский";
-                string nameDef2 = "Арсений";
-                string nameDef3 = "Александрович";
-
-                string textQuestion1 = " Enter firstName:";
-                string textQuestion2 = " Enter lastName:";
-                string textQuestion3 = " Enter patronymic:";
-                string answer;
+                // string vars for default
+                string nameDef1 = "file_txt";
+                string nameDef2 = "";
+                string nameDef3 = "О, как душа стихает вся до дна!";  
+                //string var for question text 
+                string textQuestion1 = " Enter pleas name files, and press key [Enter]:";
+                string textQuestion2 = " Enter any data , and press key [Enter]:";
+                string textQuestion3 = " ";
+                string inputStr;
 
                 // block executive
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("***************     Run Task 1     ***************");
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-                while (Finish == false)  // do
-                {
-                    answer = "";
-                    name1 = GetStrFromCons(nameDef1, textQuestion1);
-                    name2 = GetStrFromCons(nameDef2, textQuestion2);
-                    name3 = GetStrFromCons(nameDef3, textQuestion3);
-
-                    name4 = GetFullName(name1, name2, name3);
-
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("*************** Output  report  & results   ******");
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Console.Write(" Result:");
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.Write("{0}", GetFullName(name1, name2, name3));
-                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("    Next? (Y/N) :  ");
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    answer = Console.ReadLine();
-                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                    if (answer.ToUpper().Equals("N") == true)
-                    { Finish = true; }
-                    else
-                    { Finish = false; }
-                }
 
                 // shutdown countdown 
                 Console.WriteLine("   \n \n   Screen clear after :");
@@ -263,6 +193,65 @@ namespace lesson_004
 
 
         }
+
+        
+        // under
+
+                static string GetStrFromCons(string strQuestion, string strByDef)
+        {
+            string strResult = "";
+            if (TestForNullOrEmpty(strQuestion) == true)
+            { strQuestion = "   Enter value:"; }
+
+            Console.Write(strQuestion);
+            strResult = Console.ReadLine();
+
+            // check/verife isNull Empty
+            if (TestForNullOrEmpty(strResult) == true)
+            {
+                strResult = strByDef;
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write("       " + "Not value, set by default: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.Write(strResult);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("");
+
+            }
+            return strResult;
+        }
+
+        static bool TestForNullOrEmpty(string s)
+        {
+            bool result;
+            result = (s == null || s == string.Empty);
+            return result;
+        }
+
+        static void ClearScr(int countDown, int warningTimer)
+        {
+            bool bWarning = false;
+
+            for (int i = (countDown + 1); i > 0; i--)
+            {
+                System.Threading.Thread.Sleep(1000);
+                if (i == warningTimer) { bWarning = true; }
+                if (bWarning == true)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                else Console.ForegroundColor = ConsoleColor.Gray;
+                Console.Write("\r         ");
+                Console.Write("\r     [{0}]", i);
+            }
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Clear();
+
+
+
+        }
+
+
 
     }
 }
