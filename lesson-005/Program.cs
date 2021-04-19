@@ -63,7 +63,6 @@ persArray[4] = new Person(...);
 
                 // string vars for default
                 string nameDef1 = "";
-                string nameDef2 = "О, как душа стихает вся до дна! (c) Афанасий Фет 1842 \n\n";
                 string nameDef3 = "Я не ропщу на трудный путь земной,   \n" +
                                     "Я буйного не слушаю невежды:       \n" +
                                     "Моим ушам понятен звук иной,       \n" +
@@ -82,12 +81,9 @@ persArray[4] = new Person(...);
                 //string var for question text 
                 string textQuestion1 = " Enter pleas name files, and press key [Enter]:";
                 string textQuestion2 = " Enter any data , and press key [Enter]:";
-                string textQuestion3 = " ";
                 string inputStr;
 
-
                 Console.WriteLine(pathCurrStart);
-
 
                 nameDef1 = nameFile1;
                 // block executive
@@ -106,8 +102,6 @@ persArray[4] = new Person(...);
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
                 textContent2 = inputStr; inputStr = "";
 
-
-
                 // Get info about file 
                 System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1);
                 // stream for write
@@ -124,7 +118,7 @@ persArray[4] = new Person(...);
                 Console.WriteLine("   \n \n   Screen clear after :");
                 ClearScr(7, 3);
 
-                // end of  Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
+                // end of  Task № 01  
             }
 
             static void Task2()
