@@ -47,11 +47,11 @@ persArray[4] = new Person(...);
         static void Main(string[] args)
         {
             Task1();
-            //Task2();
+            Task2();
             //Task3();
 
             static void Task1()
-            { // Task № 01  )
+            { // Task № 01  
               // block declare init vars
                 string nameFile1 = "file_txt";
                 string extFile = ".txt";
@@ -79,8 +79,8 @@ persArray[4] = new Person(...);
                                     "Ты шлешь, мой Бог, с пречистою Мадонной!";
 
                 //string var for question text 
-                string textQuestion1 = " Enter pleas name files, and press key [Enter]:";
-                string textQuestion2 = " Enter any data , and press key [Enter]:";
+                string textQuestion1 = " Enter pleas name files, and press key [Enter] \n or press key [Enter] for set default value:";
+                string textQuestion2 = " Enter any data , and press key [Enter] \n or press key [Enter] for set default value:";
                 string inputStr;
 
                 Console.WriteLine(pathCurrStart);
@@ -121,14 +121,21 @@ persArray[4] = new Person(...);
                 // end of  Task № 01  
             }
 
-            static void Task2()
-            { // Task № 02 
+            static void Task2() // Task № 02 Написать программу, которая при старте дописывает текущее время в файл «startup.txt».
+            { // Task № 02 Написать программу, которая при старте дописывает текущее время в файл «startup.txt».
               // block declare init vars
+                string nameFile1 = "startup";
+                string extFile = ".txt";
+                string postfix = ""; // DateTime.Now.Date.ToString("n");
+                //rtbAdd(String.Format("Submitted on {0:MM/dd/yyyy} at {0:HH:mm:ss.ffffff}", DateTime.Now));
+                postfix = Convert.ToString (DateTime.Now.Hour) ;
+                postfix += ":" + Convert.ToString(DateTime.Now.Minute);
+                postfix += ":" + Convert.ToString(DateTime.Now.Second);
 
                 // block executive
- 
+
                 // run parsing 
-  
+
                 // Report:
                 /*
                 Console.ForegroundColor = ConsoleColor.DarkGray;
