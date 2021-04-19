@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 
 /*
@@ -54,16 +55,18 @@ persArray[4] = new Person(...);
             static void Task1()
             { // Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
               // block declare init vars
-                string nameFile1;
-                string name2;
-                string name3;
-                string name4;
+                string nameFile1 = "file_txt";
+                string textContent2;
+                string folderFiles3 = @"_files"; // name folder with text file(s)
+                string pathCurrStart = Directory.GetCurrentDirectory(); // current folder   
+                // string workFldr = lvlUpPath(pathCurrStart, 3) + "\\" + folderFiles3; 
+                string workFldr = folderFiles3;
+
 
                 bool Finish = false;
 
-
                 // string vars for default
-                string nameDef1 = "file_txt";
+                string nameDef1 = "";
                 string nameDef2 = "О, как душа стихает вся до дна! (c) Афанасий Фет 1842 ";
                 string nameDef3 = "Я не ропщу на трудный путь земной,      " +
                                     "Я буйного не слушаю невежды:            " +
@@ -86,11 +89,20 @@ persArray[4] = new Person(...);
                 string textQuestion3 = " ";
                 string inputStr;
 
+
+                Console.WriteLine(pathCurrStart);
+
+
+
                 // block executive
+                // Get info about file 
+                System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1);
+
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("***************     Run Task 1     ***************");
                 Console.ForegroundColor = ConsoleColor.Gray;
 
+                Console.WriteLine(pathCurrStart);
 
 
                 inputStr = GetStrFromCons(textQuestion1 , nameDef1 );
@@ -99,7 +111,9 @@ persArray[4] = new Person(...);
 
                 inputStr = GetStrFromCons(textQuestion2, nameDef2);
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
-                nameFile1 = inputStr; inputStr = "";
+                textContent2 = inputStr; inputStr = "";
+
+
 
 
                 // shutdown countdown 
