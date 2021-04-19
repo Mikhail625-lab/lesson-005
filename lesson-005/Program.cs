@@ -54,7 +54,7 @@ persArray[4] = new Person(...);
             static void Task1()
             { // Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
               // block declare init vars
-                string name1;
+                string nameFile1;
                 string name2;
                 string name3;
                 string name4;
@@ -64,8 +64,22 @@ persArray[4] = new Person(...);
 
                 // string vars for default
                 string nameDef1 = "file_txt";
-                string nameDef2 = "";
-                string nameDef3 = "О, как душа стихает вся до дна!";  
+                string nameDef2 = "О, как душа стихает вся до дна! (c) Афанасий Фет 1842 ";
+                string nameDef3 = "Я не ропщу на трудный путь земной,      " +
+                                    "Я буйного не слушаю невежды:            " +
+                                    "Моим ушам понятен звук иной,            " +
+                                    "И сердцу голос слышится надежды         " +
+                                    "С тех пор, как Санцио передо мной       " +
+                                    "Изобразил склоняющую вежды,             " +
+                                    "И этот лик, и этот взор святой,         " +
+                                    "Смиренные и легкие одежды,              " +
+                                    "И это лоно матери, и в нем              " +
+                                    "Младенца с ясным, радостным челом,      " +
+                                    "С улыбкою к Марии наклоненной.          " +
+                                    "О, как душа стихает вся до дна!         " +
+                                    "Как много со святого полотна            " +
+                                    "Ты шлешь, мой Бог, с пречистою Мадонной!";
+
                 //string var for question text 
                 string textQuestion1 = " Enter pleas name files, and press key [Enter]:";
                 string textQuestion2 = " Enter any data , and press key [Enter]:";
@@ -76,6 +90,16 @@ persArray[4] = new Person(...);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("***************     Run Task 1     ***************");
                 Console.ForegroundColor = ConsoleColor.Gray;
+
+
+
+                inputStr = GetStrFromCons(textQuestion1 , nameDef1 );
+                inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
+                nameFile1 = inputStr; inputStr = "";
+
+                inputStr = GetStrFromCons(textQuestion2, nameDef2);
+                inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
+                nameFile1 = inputStr; inputStr = "";
 
 
                 // shutdown countdown 
@@ -96,17 +120,7 @@ persArray[4] = new Person(...);
                 string textQuestion1 = "   Enter a group of numbers separated by a space: \n   or press key [ENTER] for set value by default:";
                 string valueByDefault;
                 //for testing:
-                /*
-                valueByDefault = "01 326 625 11 0 27 147 "; // 	 correct result : 1137
-                valueByDefault = "144 1"; //correct result : 145  Test:OK! 
-                valueByDefault = "147 326 625 11 0 27 01 "; //correct result : 1137 Test:OK! 
-                valueByDefault = "01 326 625 11 0 27 147"; //correct result : 1137 Test:OK! 
-                valueByDefault = "5369 8001	2914 7786 81 7989 2139 4026";     //	 correct result :38305  Test:OK!  range 10-10000	+ \t in middle string  
-                valueByDefault = "5369 8001	2914 7786	81	7989	2139	4026";    //	 correct result :38305  Test:OK!  range 10-10000	+ double SPACE in middle string  
-                valueByDefault = " 6270	4245	2736	8936	4795	4932	1703	4424";// correct result :38041	range 1000-10000	+ prime symbol is SPACE
-                valueByDefault = " 6270	4245	2736	8936	4795	4932	1703	4424";// correct result :38041	range 1000-10000	+ prime symbol is SPACE
-                valueByDefault = "32	55	59	87	71	33	15	98 "; // correct result : 450	range 10-100    + SPACE end string 	
-                */
+
                 valueByDefault = "458	908	485	704	800	342	740	0440";// correct result : 4877  Test:OK! 	range 100-1000	 + last number 0xx
 
                 var sb = new StringBuilder();
