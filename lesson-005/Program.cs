@@ -51,7 +51,7 @@ persArray[4] = new Person(...);
             //Task3();
 
             static void Task1()
-            { // Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
+            { // Task № 01  )
               // block declare init vars
                 string nameFile1 = "file_txt";
                 string extFile = ".txt";
@@ -60,9 +60,6 @@ persArray[4] = new Person(...);
                 string pathCurrStart = Directory.GetCurrentDirectory(); // current folder   
                 // string workFldr = lvlUpPath(pathCurrStart, 3) + "\\" + folderFiles3; 
                 string workFldr = folderFiles3;
-
-               
-                bool Finish = false;
 
                 // string vars for default
                 string nameDef1 = "";
