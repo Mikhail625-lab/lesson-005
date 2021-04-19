@@ -3,14 +3,12 @@ using System.IO;
 using System.Text;
 
 /*
-ver: 0.0a date: 2021.04.18
+ver: 0.1b date: 2021.04.18
 autor: Mikhail625@protonmail.com
 */
 
 /*
- * Great sorry ... пока ничего толкового не сделано : ((( 
- * ноя я активно работаю над этим 
- * пок только шаблон\рыба 
+   Выполнена (увы) только задача #1
  
  */
 
@@ -56,31 +54,32 @@ persArray[4] = new Person(...);
             { // Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
               // block declare init vars
                 string nameFile1 = "file_txt";
+                string extFile = ".txt";
                 string textContent2;
                 string folderFiles3 = @"_files"; // name folder with text file(s)
                 string pathCurrStart = Directory.GetCurrentDirectory(); // current folder   
                 // string workFldr = lvlUpPath(pathCurrStart, 3) + "\\" + folderFiles3; 
                 string workFldr = folderFiles3;
 
-
+               
                 bool Finish = false;
 
                 // string vars for default
                 string nameDef1 = "";
-                string nameDef2 = "О, как душа стихает вся до дна! (c) Афанасий Фет 1842 ";
-                string nameDef3 = "Я не ропщу на трудный путь земной,      " +
-                                    "Я буйного не слушаю невежды:            " +
-                                    "Моим ушам понятен звук иной,            " +
-                                    "И сердцу голос слышится надежды         " +
-                                    "С тех пор, как Санцио передо мной       " +
-                                    "Изобразил склоняющую вежды,             " +
-                                    "И этот лик, и этот взор святой,         " +
-                                    "Смиренные и легкие одежды,              " +
-                                    "И это лоно матери, и в нем              " +
-                                    "Младенца с ясным, радостным челом,      " +
-                                    "С улыбкою к Марии наклоненной.          " +
-                                    "О, как душа стихает вся до дна!         " +
-                                    "Как много со святого полотна            " +
+                string nameDef2 = "О, как душа стихает вся до дна! (c) Афанасий Фет 1842 \n\n";
+                string nameDef3 = "Я не ропщу на трудный путь земной,   \n" +
+                                    "Я буйного не слушаю невежды:       \n" +
+                                    "Моим ушам понятен звук иной,       \n" +
+                                    "И сердцу голос слышится надежды    \n" +
+                                    "С тех пор, как Санцио передо мной  \n" +
+                                    "Изобразил склоняющую вежды,        \n" +
+                                    "И этот лик, и этот взор святой,    \n" +
+                                    "Смиренные и легкие одежды,         \n" +
+                                    "И это лоно матери, и в нем         \n" +
+                                    "Младенца с ясным, радостным челом, \n" +
+                                    "С улыбкою к Марии наклоненной.     \n" +
+                                    "О, как душа стихает вся до дна!    \n" +
+                                    "Как много со святого полотна       \n" +
                                     "Ты шлешь, мой Бог, с пречистою Мадонной!";
 
                 //string var for question text 
@@ -93,10 +92,8 @@ persArray[4] = new Person(...);
                 Console.WriteLine(pathCurrStart);
 
 
-
+                nameDef1 = nameFile1;
                 // block executive
-                // Get info about file 
-                System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1);
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("***************     Run Task 1     ***************");
@@ -104,21 +101,31 @@ persArray[4] = new Person(...);
 
                 Console.WriteLine(pathCurrStart);
 
-
                 inputStr = GetStrFromCons(textQuestion1 , nameDef1 );
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
-                nameFile1 = inputStr; inputStr = "";
+                nameFile1 = inputStr+extFile ; inputStr = "";
 
-                inputStr = GetStrFromCons(textQuestion2, nameDef2);
+                inputStr = GetStrFromCons(textQuestion2, nameDef3);
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
                 textContent2 = inputStr; inputStr = "";
 
 
 
+                // Get info about file 
+                System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1);
+                // stream for write
+                System.IO.StreamWriter sw ;
+
+                //
+                if (fi.Exists == true) { sw = fi.AppendText(); }
+                else { sw = fi.CreateText(); }
+                sw.WriteLine(textContent2);
+                sw.Close();
+
 
                 // shutdown countdown 
                 Console.WriteLine("   \n \n   Screen clear after :");
-                ClearScr(10, 5);
+                ClearScr(7, 3);
 
                 // end of  Task № 01  Написать метод GetFullName(string firstName, string lastName, string patronymic)
             }
@@ -127,52 +134,12 @@ persArray[4] = new Person(...);
             { // Task № 02 
               // block declare init vars
 
-                int summaNumbers = 0;
-                int countNumbers = 0; // количество слов и\или чисел вычлененных из строки; необязательный 
-
-                string inputStr;
-                string textQuestion1 = "   Enter a group of numbers separated by a space: \n   or press key [ENTER] for set value by default:";
-                string valueByDefault;
-                //for testing:
-
-                valueByDefault = "458	908	485	704	800	342	740	0440";// correct result : 4877  Test:OK! 	range 100-1000	 + last number 0xx
-
-                var sb = new StringBuilder();
-
                 // block executive
-                Console.WriteLine("***************     Run Task 2     ***************");
-                inputStr = GetStrFromCons(valueByDefault, textQuestion1);
-                inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
-                char[] arrChars = inputStr.ToCharArray();
-
+ 
                 // run parsing 
-                {
-                    int i = 0; // int j = 0;
-                    do
-                    {
-                        if ((arrChars[i] != ' ') && (i < arrChars.Length - 1)) // or end lenth\range massive
-                        {
-                            sb.Append(arrChars[i]);
-                        }
-                        else if ((arrChars[i] != ' ') && i == arrChars.Length - 1)
-                        {
-                            sb.Append(arrChars[i]);
-                            summaNumbers = summaNumbers + Convert.ToInt32(sb.ToString());
-                            sb.Clear();
-                            countNumbers++;
-                        }
-                        else if (arrChars[i] == ' ')
-                        {
-                            summaNumbers = summaNumbers + Convert.ToInt32(sb.ToString());
-                            sb.Clear();
-                            countNumbers++;
-                        }
-                        i++;
-                    }
-                    while (i < arrChars.Length);
-
-                }
+  
                 // Report:
+                /*
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("*************** Output  report  & results   ******");
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -184,16 +151,13 @@ persArray[4] = new Person(...);
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.WriteLine("  Detected {0} numbers ", countNumbers);
                 Console.WriteLine(""); Console.ForegroundColor = ConsoleColor.Gray;
+                */
 
                 //countNumbers
                 //Console.ForegroundColor = ConsoleColor.Gray;
                 //Console.WriteLine("");
 
-                Console.Write("   " + "Summa =");
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(summaNumbers);
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine("");
+
 
                 Console.WriteLine("   \n \n   Screen clear after :");
                 ClearScr(10, 5);
@@ -205,15 +169,16 @@ persArray[4] = new Person(...);
 
             static void Task3()
             {
-                // block declare init vars
+
+                string textQuestion1 = "Quo vadis?";
                 Random rnd = new Random();
-                string textQuestion1 = "   Введите номер месяца \n   или нажмите клавишу [Enter] \n   для ввода значения по умолчанию \n   ";
-                string strErr = "   Ошибка: введите число от 1 до 12";
+
+                // block declare init vars
 
 
                 Console.WriteLine("***************     Run Task 3     ***************");
                 Console.WriteLine("*                                                *");
-                string inputStr = GetStrFromCons(Convert.ToString(rnd.Next(1, 12)), textQuestion1);
+                //string inputStr = GetStrFromCons(Convert.ToString(textQuestion1 , Convert.ToString( rnd.Next(1, 12))   ) );
 
 
 
@@ -225,7 +190,7 @@ persArray[4] = new Person(...);
         
         // under
 
-                static string GetStrFromCons(string strQuestion, string strByDef)
+        static string GetStrFromCons(string strQuestion, string strByDef)
         {
             string strResult = "";
             if (TestForNullOrEmpty(strQuestion) == true)
@@ -249,14 +214,14 @@ persArray[4] = new Person(...);
             return strResult;
         }
 
-        static bool TestForNullOrEmpty(string s)
+        static bool   TestForNullOrEmpty(string s)
         {
             bool result;
             result = (s == null || s == string.Empty);
             return result;
         }
 
-        static void ClearScr(int countDown, int warningTimer)
+        static void   ClearScr(int countDown, int warningTimer)
         {
             bool bWarning = false;
 
