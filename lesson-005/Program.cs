@@ -3,12 +3,12 @@ using System.IO;
 using System.Text;
 
 /*
-ver: 0.1b date: 2021.04.18
+ver: 0.3a date: 2021.04.18
 autor: Mikhail625@protonmail.com
 */
 
 /*
-   Выполнена (увы) только задача #1
+   Пока выполнена (увы) т только задача №1 №2
  
  */
 
@@ -46,9 +46,10 @@ persArray[4] = new Person(...);
 
         static void Main(string[] args)
         {
-            Task1();
-            Task2();
-            //Task3();
+            ConfigureConsole(" Lesson #5   ver: 0.3a date: 2021.04.18")
+            //Task1();
+            //Task2();
+            Task3();
 
             static void Task1()
             { // Task № 01  
@@ -230,7 +231,19 @@ persArray[4] = new Person(...);
 
         }
 
+        static void ConfigureConsole(string headerConsWindow)
+        {
+            // Configure console.
+            Console.Title = headerConsWindow;
+            Console.BufferWidth = 80;
+            Console.WindowWidth = Console.BufferWidth;
+            Console.TreatControlCAsInput = true;
 
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+        }
 
     }
 }
