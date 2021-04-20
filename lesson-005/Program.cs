@@ -56,10 +56,7 @@ persArray[4] = new Person(...);
                 string nameFile1 = "file_txt";
                 string extFile = ".txt";
                 string textContent2;
-                string folderFiles3 = @"_files"; // name folder with text file(s)
                 string pathCurrStart = Directory.GetCurrentDirectory(); // current folder   
-                // string workFldr = lvlUpPath(pathCurrStart, 3) + "\\" + folderFiles3; 
-                string workFldr = folderFiles3;
 
                 // string vars for default
                 string nameDef1 = "";
@@ -126,39 +123,30 @@ persArray[4] = new Person(...);
               // block declare init vars
                 string nameFile1 = "startup";
                 string extFile = ".txt";
-                string postfix = ""; // DateTime.Now.Date.ToString("n");
-                //rtbAdd(String.Format("Submitted on {0:MM/dd/yyyy} at {0:HH:mm:ss.ffffff}", DateTime.Now));
-                postfix = Convert.ToString (DateTime.Now.Hour) ;
-                postfix += ":" + Convert.ToString(DateTime.Now.Minute);
-                postfix += ":" + Convert.ToString(DateTime.Now.Second);
+                //string postfix = "";
 
+                string pathCurrStart = Directory.GetCurrentDirectory(); // current folder 
+
+                StringBuilder postfix = new StringBuilder();
                 // block executive
 
-                // run parsing 
+                postfix.Append( Convert.ToString(DateTime.Now.Hour)
+                        + ":" + Convert.ToString(DateTime.Now.Minute)
+                        + ":" + Convert.ToString(DateTime.Now.Second) + "\n");
 
-                // Report:
-                /*
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("*************** Output  report  & results   ******");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                // Get info about file 
+                System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1+ extFile);
+                // stream for write
+                System.IO.StreamWriter sw;
 
-                Console.Write("   " + "Source string : \""); Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write("   " + inputStr); Console.ForegroundColor = ConsoleColor.Gray;
-                Console.Write("\" ");
-
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("  Detected {0} numbers ", countNumbers);
-                Console.WriteLine(""); Console.ForegroundColor = ConsoleColor.Gray;
-                */
-
-                //countNumbers
-                //Console.ForegroundColor = ConsoleColor.Gray;
-                //Console.WriteLine("");
-
-
-
+                //
+                if (fi.Exists == true) { sw = fi.AppendText(); }
+                else { sw = fi.CreateText(); }
+                sw.WriteLine(postfix);
+                sw.Close();
+                Console.WriteLine("   That all..");
                 Console.WriteLine("   \n \n   Screen clear after :");
-                ClearScr(10, 5);
+                ClearScr(5, 3);
                 // end of  Task № 02
 
             }
