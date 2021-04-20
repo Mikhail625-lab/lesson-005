@@ -46,9 +46,9 @@ persArray[4] = new Person(...);
 
         static void Main(string[] args)
         {
-            ConfigureConsole(" Lesson #5   ver: 0.3a date: 2021.04.18")
-            //Task1();
-            //Task2();
+            ConfigureConsole(" Lesson #5   ver: 0.3a date: 2021.04.18");
+            Task1();
+            Task2();
             Task3();
 
             static void Task1()
