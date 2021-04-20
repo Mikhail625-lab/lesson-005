@@ -77,28 +77,31 @@ persArray[4] = new Person(...);
                                     "Ты шлешь, мой Бог, с пречистою Мадонной!";
 
                 //string var for question text 
-                string textQuestion1 = " Enter pleas name files, and press key [Enter] \n or press key [Enter] for set default value:";
-                string textQuestion2 = " Enter any data , and press key [Enter] \n or press key [Enter] for set default value:";
+                string textQuestion1 = "   Enter pleas name files, and press key [Enter] \n   or press key [Enter] for set default value:";
+                string textQuestion2 = "   Enter any data , and press key [Enter] \n   or press key [Enter] for set default value:";
                 string inputStr;
-
-                Console.WriteLine(pathCurrStart);
 
                 nameDef1 = nameFile1;
                 // block executive
 
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("***************     Run Task 1     ***************");
+                Console.WriteLine("***************     Run Task 1     **************************");
+                Console.WriteLine("*   \n*   Current path: \n*   {0}", pathCurrStart);
+                Console.WriteLine("*                                                           *");
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-                Console.WriteLine(pathCurrStart);
 
+                // get full patch + file name 
                 inputStr = GetStrFromCons(textQuestion1 , nameDef1 );
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
-                nameFile1 = inputStr+extFile ; inputStr = "";
+                nameFile1 = inputStr+extFile ; 
+                inputStr = "";
 
+                //get text fo write to file
                 inputStr = GetStrFromCons(textQuestion2, nameDef3);
                 inputStr = (inputStr.Replace('\t', ' ')).Trim(' '); // избавляемся от вкравшихся табов и пограничных пробелов 
-                textContent2 = inputStr; inputStr = "";
+                textContent2 = inputStr; 
+                inputStr = "";
 
                 // Get info about file 
                 System.IO.FileInfo fi = new System.IO.FileInfo(pathCurrStart + "\\" + nameFile1);
@@ -179,21 +182,23 @@ persArray[4] = new Person(...);
 
         static string GetStrFromCons(string strQuestion, string strByDef)
         {
-            string strResult = "";
+            string strResult;
             if (TestForNullOrEmpty(strQuestion) == true)
             { strQuestion = "   Enter value:"; }
-
-            Console.Write(strQuestion);
+ 
+            Console.WriteLine("   " + strQuestion);
+            //Console.ForegroundColor = ConsoleColor.DarkYellow;
             strResult = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
 
             // check/verife isNull Empty
             if (TestForNullOrEmpty(strResult) == true)
             {
                 strResult = strByDef;
                 Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.Write("       " + "Not value, set by default: ");
+                Console.WriteLine("       " + "Not value, set by default: ");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.Write(strResult);
+                Console.WriteLine(strResult);
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("");
 
@@ -235,14 +240,15 @@ persArray[4] = new Person(...);
         {
             // Configure console.
             Console.Title = headerConsWindow;
-            Console.BufferWidth = 80;
+            /*
+             * Console.BufferWidth = 80;
             Console.WindowWidth = Console.BufferWidth;
             Console.TreatControlCAsInput = true;
 
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Gray;
-
+            */
         }
 
     }
